@@ -26,6 +26,14 @@ public class HelloController {
 
     private final HelloService helloService;
 
+    @PostConstruct
+    void init () {
+        for(int i = 0; i < 100; i++) {
+            HelloDto helloDto = HelloDto.builder().userId("hjs" + i).name("홍길동" + i).build();
+            helloService.register(helloDto);
+        }
+    }
+
     @GetMapping("/hello")
     public String hello(Model model, @RequestParam("userId") String userId) {
         HelloDto helloDto = helloService.getHelloByUserId(userId);

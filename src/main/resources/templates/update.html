@@ -11,6 +11,7 @@
     <h1>사용자 정보 수정</h1>
 
     <form action="/update" method="post" class="user-form">
+        <input type="hidden" th:value="${helloDto.userId}"></input>
         <div class="form-group">
             <label for="name">이름:</label>
             <input type="text" id="name" name="name" th:value="${helloDto.name}">
