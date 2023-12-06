@@ -1,20 +1,27 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>사용자 상세 정보</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h1>Hello World</h1>
-이름: <p th:text="${name}">이름</p>
-아이디: <p th:text="${userId}">아이디</p>
-패스워드: <p th:text="${password}">패스워드</p>
-
-<a href="/delete">삭제</a>
-<a href="/register">등록</a>
-<a href="/list">리스트조회</a>
+<div class="container">
+    <h1>사용자 상세 정보</h1>
+    <div class="navigation">
+        <a href="/list">목록으로</a>
+    </div>
+    <div class="user-details">
+        <p>이름: <span id="userName" th:text="${helloDto.name}"></span></p>
+        <p>전화번호: <span id="userPhone" th:text="${helloDto.phone}"></span></p>
+        <p>나이: <span id="userAge" th:text="${helloDto.age}"></span></p>
+        <p>사용자 ID: <span id="userId" th:text="${helloDto.userId}"></span></p>
+        <p>사용자 비밀번호: <span id="password" th:text="${helloDto.password}"></span></p>
+    </div>
+    <div class="actions">
+        <a th:href="@{/update?userId={userId}(userId=${helloDto.userId})}">수정</a>
+        <a th:href="@{/delete?userId={userId}(userId=${helloDto.userId})}">삭제</a>
+    </div>
+</div>
 </body>
 </html>

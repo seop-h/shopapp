@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>사용자 정보 수정</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>사용자 정보 수정</h1>
+
+    <form action="/update" method="post" class="user-form">
+        <div class="form-group">
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name" th:value="${helloDto.name}">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">전화번호:</label>
+            <input type="number" id="phone" name="phone" th:value="${helloDto.phone}">
+        </div>
+
+        <div class="form-group">
+            <label for="age">나이:</label>
+            <input type="number" id="age" name="age" th:value="${helloDto.age}">
+        </div>
+
+        <div class="form-group">
+            <label for="userId">사용자 ID:</label>
+            <input style="background-color: lightgray"
+                   type="text" id="userId" name="userId" th:value="${helloDto.userId}"
+                   readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" th:value="${helloDto.password}">
+        </div>
+
+        <input type="submit" value="수정" class="submit-button">
+    </form>
+
+    <div class="actions">
+        <a th:href="@{/hello?userId={userId}(userId=${helloDto.userId})}">취소</a>
+    </div>
+</div>
+
+</body>
+</html>

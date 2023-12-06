@@ -1,6 +1,7 @@
-package com.hjs.shopapp.presentation;
+package com.hjs.shopapp.presentation.rest;
 
 import com.hjs.shopapp.domain.dto.HelloDto;
+import com.hjs.shopapp.domain.model.Hello;
 import com.hjs.shopapp.domain.service.HelloService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;

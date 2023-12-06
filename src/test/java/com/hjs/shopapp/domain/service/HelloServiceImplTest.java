@@ -20,7 +20,7 @@ class HelloServiceImplTest {
 
     @BeforeEach
     void beforeEach() {
-        build = HelloDto.builder().name("test1").phone(1234).age(12).userId("test").password("test").build();
+        build = HelloDto.builder().name("test1").phone("01012341234").age(12).userId("test").password("test").build();
         helloService.register(build);
     }
 
