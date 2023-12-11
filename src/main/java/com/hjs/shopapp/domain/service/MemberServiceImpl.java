@@ -41,10 +41,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public MemberDto getMemberByUserId(String userId) {
         Optional<Member> foundMember = memberRepository.findByUserId(userId);
-        if (foundMember.isEmpty()) {
-            throw new IllegalArgumentException("사용자 아이디와 일치하는 회원정보가 없습니다.");
-        }
-        return foundMember.get().toDto();
+        return foundMember.map(Member::toDto).orElse(null);
     }
 
     @Override

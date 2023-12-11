@@ -26,7 +26,6 @@ class MemberServiceImplTest {
     @DisplayName("회원가입 테스트")
     void register() {
         MemberDto hello = memberService.getMember(1L);
-
         Assertions.assertThat(build.getName()).isEqualTo(hello.getName());
     }
 

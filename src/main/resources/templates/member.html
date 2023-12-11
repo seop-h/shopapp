@@ -11,17 +11,22 @@
     <div class="navigation">
         <a href="/member/list">목록으로</a>
     </div>
-    <div class="user-details">
-        <p>이름: <span id="userName" th:text="${memberDto.name}"></span></p>
-        <p>전화번호: <span id="userPhone" th:text="${memberDto.phone}"></span></p>
-        <p>나이: <span id="userAge" th:text="${memberDto.age}"></span></p>
-        <p>사용자 ID: <span id="userId" th:text="${memberDto.userId}"></span></p>
-        <p>사용자 비밀번호: <span id="password" th:text="${memberDto.password}"></span></p>
+    <div th:if="${memberDto == null}" class="user-details">
+        <p>해당 사용자 정보가 없습니다.</p>
     </div>
-    <div class="actions">
-        <a th:href="@{/member/update?userId={userId}(userId=${memberDto.userId})}">수정</a>
-        <a th:onclick="onDelete([[${memberDto.userId}]])">삭제</a>
-    </div>
+    <th:block th:if="${memberDto != null}">
+        <div class="user-details">
+            <p>이름: <span id="userName" th:text="${memberDto.name}"></span></p>
+            <p>전화번호: <span id="userPhone" th:text="${memberDto.phone}"></span></p>
+            <p>나이: <span id="userAge" th:text="${memberDto.age}"></span></p>
+            <p>사용자 ID: <span id="userId" th:text="${memberDto.userId}"></span></p>
+            <p>사용자 비밀번호: <span id="password" th:text="${memberDto.password}"></span></p>
+        </div>
+        <div class="actions">
+            <a th:href="@{/member/update?userId={userId}(userId=${memberDto.userId})}">수정</a>
+            <a th:onclick="onDelete([[${memberDto.userId}]])" style="cursor: pointer">삭제</a>
+        </div>
+    </th:block>
 
     <script>
         function onDelete(userId) {
@@ -41,7 +46,7 @@
                         }
                     }
                 };
-                xhr.send(JSON.stringify({ userId: userId }));
+                xhr.send(JSON.stringify({userId: userId}));
             }
         }
     </script>
