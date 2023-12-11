@@ -1,6 +1,6 @@
 package com.hjs.shopapp.domain.model;
 
-import com.hjs.shopapp.domain.dto.HelloDto;
+import com.hjs.shopapp.domain.dto.MemberDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Hello {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +32,8 @@ public class Hello {
 
     private String password;
 
-    public HelloDto toDto() {
-        return HelloDto.builder()
+    public MemberDto toDto() {
+        return MemberDto.builder()
                 .name(name)
                 .phone(phone)
                 .age(age)

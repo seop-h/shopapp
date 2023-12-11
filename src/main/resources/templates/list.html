@@ -12,7 +12,7 @@
 <div class="container">
     <h1>유저 목록</h1>
 
-    <form th:object="${helloSearch}" method="get">
+    <form th:object="${memberSearch}" method="get">
         <div>
             <div>
                 <input type="text" th:field="*{name}" placeholder="이름"/>
@@ -27,16 +27,16 @@
     </form>
 
     <div class="navigation">
-        <a href="/register">등록</a>
+        <a href="/member/register">등록</a>
     </div>
 
     <ul>
-        <li th:each="hello : ${helloList}">
-            <span th:text="${hello.name}">이름</span>
-            <span th:text="${hello.userId}">사용자 ID</span>
-            <span th:text="${hello.phone}">전화번호</span>
-            <span th:text="${hello.age}">나이</span>
-            <a href="hello.html" th:href="@{/hello?userId={userId}(userId=${hello.userId})}">상세 보기</a>
+        <li th:each="member : ${memberList}">
+            <span th:text="${member.name}">이름</span>
+            <span th:text="${member.userId}">사용자 ID</span>
+            <span th:text="${member.phone}">전화번호</span>
+            <span th:text="${member.age}">나이</span>
+            <a href="member.html" th:href="@{/member?userId={userId}(userId=${member.userId})}">상세 보기</a>
         </li>
     </ul>
 </div>

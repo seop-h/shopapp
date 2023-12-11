@@ -1,7 +1,7 @@
 package com.hjs.shopapp.presentation.basic;
 
-import com.hjs.shopapp.domain.dto.HelloDto;
-import com.hjs.shopapp.domain.service.HelloService;
+import com.hjs.shopapp.domain.dto.MemberDto;
+import com.hjs.shopapp.domain.service.MemberService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class HomeController {
 
-    private final HelloService helloService;
+    private final MemberService memberService;
 
     @RequestMapping("/")
     public String home() {
-        return "redirect:/list";
+        return "redirect:/member/list";
     }
 
     @PostConstruct
     void init() {
-        HelloDto helloDto = HelloDto.builder()
+        MemberDto memberDto = MemberDto.builder()
                 .name("hjs")
                 .phone("01066977430")
                 .age(27)
                 .userId("hwangjs")
                 .password("123")
                 .build();
-        helloService.register(helloDto);
+        memberService.register(memberDto);
     }
 
 }

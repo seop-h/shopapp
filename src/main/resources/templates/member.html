@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>사용자 상세 정보</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>사용자 상세 정보</h1>
+    <div class="navigation">
+        <a href="/member/list">목록으로</a>
+    </div>
+    <div class="user-details">
+        <p>이름: <span id="userName" th:text="${memberDto.name}"></span></p>
+        <p>전화번호: <span id="userPhone" th:text="${memberDto.phone}"></span></p>
+        <p>나이: <span id="userAge" th:text="${memberDto.age}"></span></p>
+        <p>사용자 ID: <span id="userId" th:text="${memberDto.userId}"></span></p>
+        <p>사용자 비밀번호: <span id="password" th:text="${memberDto.password}"></span></p>
+    </div>
+    <div class="actions">
+        <a th:href="@{/member/update?userId={userId}(userId=${memberDto.userId})}">수정</a>
+        <a th:onclick="onDelete([[${memberDto.userId}]])">삭제</a>
+    </div>
+
+    <script>
+        function onDelete(userId) {
+            const r = confirm("정말로 삭제 하시겠습니까?");
+            if (r) {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/member/delete/" + userId, true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        // 처리 완료 후 실행할 코드
+                        if (xhr.status === 200) {
+                            confirm("삭제되었습니다.");
+                            window.location.href = "/member/list";
+                        } else {
+                            console.error("삭제 실패");
+                        }
+                    }
+                };
+                xhr.send(JSON.stringify({ userId: userId }));
+            }
+        }
+    </script>
+</div>
+</body>
+</html>

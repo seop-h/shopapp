@@ -4,45 +4,71 @@
     <meta charset="UTF-8">
     <title>사용자 정보 수정</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <style>
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
     <h1>사용자 정보 수정</h1>
 
-    <form action="/update" method="post" class="user-form">
+    <form action="/member/update" th:object="${memberDto}" method="post" class="user-form">
         <div class="form-group">
             <label for="name">이름:</label>
-            <input type="text" id="name" name="name" th:value="${helloDto.name}">
+            <input type="text" id="name" name="name" th:field="*{name}"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{name}">
+                이름 오류
+            </div>
         </div>
 
         <div class="form-group">
             <label for="phone">전화번호:</label>
-            <input type="number" id="phone" name="phone" th:value="${helloDto.phone}">
+            <input type="number" id="phone" name="phone" th:field="*{phone}"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{phone}">
+                전화번호 오류
+            </div>
         </div>
 
         <div class="form-group">
             <label for="age">나이:</label>
-            <input type="number" id="age" name="age" th:value="${helloDto.age}">
+            <input type="number" id="age" name="age" th:field="*{age}"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{age}">
+                나이 오류
+            </div>
         </div>
 
         <div class="form-group">
             <label for="userId">사용자 ID:</label>
             <input style="background-color: lightgray"
-                   type="text" id="userId" name="userId" th:value="${helloDto.userId}"
+                   type="text" id="userId" name="userId" th:field="*{userId}"
+                   th:errorclass="field-error"
                    readonly>
+            <div class="field-error" th:errors="*{userId}">
+                사용자 ID 오류
+            </div>
         </div>
 
         <div class="form-group">
             <label for="password">비밀번호:</label>
-            <input type="password" id="password" name="password" th:value="${helloDto.password}">
+            <input type="password" id="password" name="password" th:field="*{password}"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{password}">
+                비밀번호 오류
+            </div>
         </div>
 
         <input type="submit" value="수정" class="submit-button">
     </form>
 
     <div class="actions">
-        <a th:href="@{/hello?userId={userId}(userId=${helloDto.userId})}">취소</a>
+        <a th:href="@{/member?userId={userId}(userId=${memberDto.userId})}">취소</a>
     </div>
 </div>
 

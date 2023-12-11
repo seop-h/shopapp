@@ -4,47 +4,69 @@
     <meta charset="UTF-8">
     <title>사용자 정보 입력</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <style>
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
     <h1>사용자 등록</h1>
 
-    <div class="navigation">
-        <a href="/list">목록으로</a>
-    </div>
-
-    <form action="/register" method="post" class="user-form">
+    <form action="/member/register" th:object="${memberDto}" method="post" class="user-form">
         <div class="form-group">
             <label for="name">이름:</label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" th:field="*{name}"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{name}">
+                이름 오류
+            </div>
         </div>
 
         <div class="form-group">
             <label for="phone">전화번호:</label>
-            <input type="number" id="phone" name="phone">
+            <input type="number" id="phone" name="phone" th:field="*{phone}"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{phone}">
+                전화번호 오류
+            </div>
         </div>
 
         <div class="form-group">
             <label for="age">나이:</label>
-            <input type="number" id="age" name="age">
+            <input type="number" id="age" name="age" th:field="*{age}"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{age}">
+                나이 오류
+            </div>
         </div>
 
         <div class="form-group">
             <label for="userId">사용자 ID:</label>
-            <input type="text" id="userId" name="userId">
+            <input type="text" id="userId" name="userId" th:field="*{userId}"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{userId}">
+                사용자 아이디 오류
+            </div>
         </div>
 
         <div class="form-group">
             <label for="password">비밀번호:</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" th:field="*{password}"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{password}">
+                비밀번호 오류
+            </div>
         </div>
 
         <input type="submit" value="저장" class="submit-button">
     </form>
 
     <div class="actions">
-        <a href="/list">취소</a>
+        <a href="/member/list">취소</a>
     </div>
 </div>
 

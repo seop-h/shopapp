@@ -1,8 +1,8 @@
 ### 1. 첫번째 멤버 정보 조회(id=1)
-GET {{host}}/api/hello?id=1
+GET {{host}}/api/member?id=1
 
 ### 2. id=2 멤버 저장
-POST {{host}}/api/hello
+POST {{host}}/api/member
 Content-Type: application/json
 
 {
@@ -14,13 +14,13 @@ Content-Type: application/json
 }
 
 ### 3. 두번째 멤버 정보 조회(id=2)
-GET {{host}}/api/hello?id=2
+GET {{host}}/api/member?id=2
 
 ### 4. 모든 멤버 정보 조회
-GET {{host}}/api/hello/list
+GET {{host}}/api/member/list
 
 ### 5. userId=9709인 멤버(id=2) 정보 수정
-PUT {{host}}/api/hello
+PUT {{host}}/api/member
 Content-Type: application/json
 
 {
@@ -32,10 +32,10 @@ Content-Type: application/json
 }
 
 ### 6. 수정 후 두번째 멤버 정보 조회(id=2)
-GET {{host}}/api/hello?id=2
+GET {{host}}/api/member?id=2
 
 ### 7. 두번째 멤버 정보 삭제
-DELETE {{host}}/api/hello?id=2
+DELETE {{host}}/api/member?id=2
 
 ### 8. 삭제 후 두번째 멤버 정보 조회(id=2)
-GET {{host}}/api/hello?id=2
+GET {{host}}/api/member?id=2
